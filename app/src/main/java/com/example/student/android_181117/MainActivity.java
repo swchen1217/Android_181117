@@ -37,21 +37,18 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Button tmp = (Button) findViewById(v.getId());
             str=tmp.getText().toString();
-            a();
+            if(sw1.isChecked()){
+                Toast toast = Toast.makeText(MainActivity.this, "你按了"+str, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("確認視窗");
+                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setMessage("你按了"+str);
+                builder.setPositiveButton("確認",null);
+                builder.show();
+            }
         }
     };
-    void a(){
-        if(sw1.isChecked()){
-            Toast toast = Toast.makeText(this, "你按了"+str, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("確認視窗");
-            builder.setIcon(R.mipmap.ic_launcher);
-            builder.setMessage("你按了"+str);
-            builder.setPositiveButton("確認",null);
-            builder.show();
-        }
-    }
 }
